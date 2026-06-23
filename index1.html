@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>프로포즈 대작전 - 도둑맞은 백년가약</title>
+    <style>
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .screen {
+            display: none;
+            padding: 30px 20px;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+        #screen-title {
+            display: flex;
+        }
+        h1 {
+            font-size: 28px;
+            color: #f1c40f;
+            margin-bottom: 40px; 
+            text-shadow: 0 0 15px rgba(241, 196, 15, 0.6);
+            line-height: 1.4;
+            min-height: 80px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #f1c40f;
+            margin-left: 2px;
+            animation: blink 0.8s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s, opacity 0.5s ease-in;
+            width: 100%;
+            max-width: 300px;
+        }
+        #start-btn {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .btn:active {
+            transform: scale(0.95);
+        }
+        .webtoon-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+        .panel {
+            background: #2c2c2c;
+            border: 2px solid #444;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        .panel-img {
+            width: 100%;
+            height: 220px;
+            background: #3a3a3a;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+        .panel-text {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #ecf0f1;
+            word-break: keep-all;
+        }
+        .message-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 5px solid #f1c40f;
+            padding: 20px;
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.6;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        .quiz-box {
+            text-align: left;
+            margin-bottom: 20px;
+            background: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        .quiz-title {
+            color: #34db98;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .quiz-desc {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #7f8c8d;
+            background: #1a252f;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #f1c40f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 타이틀 화면 -->
+    <div id="screen-title" class="screen">
+        <h1><span id="typing-text"></span><span class="cursor">&nbsp;</span></h1>
+        <button id="start-btn" class="btn" onclick="nextScreen('screen-title', 'screen-webtoon')">사건의 전말 확인하기</button>
+    </div>
+
+    <!-- 2. 웹툰 화면 -->
+    <div id="screen-webtoon" class="screen">
+        <h2 style="color: #e74c3c; margin-bottom: 20px;">[사건 발생]</h2>
+        <div class="webtoon-container">
+            <div class="panel">
+                <img class="panel-img" src="img1.png" alt="행복해하는 두 남녀를 몰래 바라보는 도둑">
+                <div class="panel-text">행복한 미래를 약속한 태양과 은빈.<br>그들을 어둠 속에서 몰래 지켜보는 수상한 그림자가 있었다.</div>
+            </div>
+            <div class="panel">
+                <img class="panel-img" src="img2.png" alt="두 남녀의 반지를 쳐다보는 도둑">
+                <div class="panel-text">그림자의 시선이 머문 곳은 두 사람의 영원한 사랑을 증명할 아름다운 '결혼반지'였다.</div>
+            </div>
+            <div class="panel">
+                <img class="panel-img" src="img3.png" alt="몰래 금은방에 들어가 반지를 훔치는 도둑">
+                <div class="panel-text">아무도 없는 틈을 타, 도둑은 몰래 금은방에 잠입하여 소중한 반지를 가로채고 만다!</div>
+            </div>
+            <div class="panel">
+                <img class="panel-img" src="img4.png" alt="도망가는 장면">
+                <div class="panel-text">"이 반지는 내가 가져간다!"<br>반지를 훔친 도둑은 어둠 속으로 유유히 자취를 감추었다.</div>
+            </div>
+        </div>
+        <button class="btn" onclick="nextScreen('screen-webtoon', 'screen-mission')" style="margin-bottom: 30px;">수사 시작 (힌트 보기)</button>
+    </div>
+
+    <!-- 3. 메시지 및 문제 화면 -->
+    <div id="screen-mission" class="screen">
+        <div class="message-box">
+            🕵️‍♂️ <strong>[괴도 X의 메시지]</strong><br><br>
+            "명탐정 은빈, 결혼반지를 도둑맞다니 방심했군!<br><br>
+            나를 잡고 싶다면 내가 숨어있는 마법의 좌표(w3w) 세 단어를 조합해 찾아와라. 아주 쉬운 문제니 조수의 도움 따윈 필요 없겠지?"
+        </div>
+
+        <div class="quiz-box">
+            <div class="quiz-title">🔒 단서 1</div>
+            <div class="quiz-desc">얼룩덜룩한 무늬를 가졌고, '음매~' 하고 우는 동물! 우리에게 고소하고 하얀 우유를 주는 이 동물은? (2글자)</div>
+            <input type="text" id="answer1" placeholder="정답 입력">
+        </div>
+
+        <div class="quiz-box">
+            <div class="quiz-title">🔒 단서 2</div>
+            <div class="quiz-desc">비나 눈이 오지 않고 구름 없이 맑은 날. 햇살이 아주 기분 좋게 내리쬐는 날씨를 세 글자로 'OOO 날씨'라고 하지?</div>
+            <input type="text" id="answer2" placeholder="정답 입력">
+        </div>
+
+        <div class="quiz-box">
+            <div class="quiz-title">🔒 단서 3</div>
+            <div class="quiz-desc">여러 가지를 따로 나누지 않고 하나의 큰 테두리로 묶어버린다는 뜻의 단어.</div>
+            <input type="text" id="answer3" placeholder="정답 입력">
+        </div>
+
+        <button class="btn" onclick="checkAnswers()">정답 확인</button>
+    </div>
+
+    <script>
+        const textToType = "프로포즈 대작전\n도둑맞은 백년가약";
+        const typingSpeed = 120;
+        let typeIndex = 0;
+
+        window.onload = function() {
+            typeWriter();
+        };
+
+        function typeWriter() {
+            const typingElement = document.getElementById("typing-text");
+            if (typeIndex < textToType.length) {
+                if (textToType.charAt(typeIndex) === '\n') {
+                    typingElement.innerHTML += "<br>";
+                } else {
+                    typingElement.innerHTML += textToType.charAt(typeIndex);
+                }
+                typeIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            } else {
+                const startBtn = document.getElementById("start-btn");
+                startBtn.style.opacity = 1;
+                startBtn.style.pointerEvents = "auto";
+            }
+        }
+
+        function nextScreen(hideId, showId) {
+            document.getElementById(hideId).style.display = 'none';
+            document.getElementById(showId).style.display = 'flex';
+            window.scrollTo(0, 0);
+        }
+
+        function checkAnswers() {
+            let ans1 = document.getElementById('answer1').value.trim().replace(/ /g, "");
+            let ans2 = document.getElementById('answer2').value.trim().replace(/ /g, "");
+            let ans3 = document.getElementById('answer3').value.trim().replace(/ /g, "");
+
+            if (ans1 === "젖소" && ans2 === "화창한" && ans3 === "포괄") {
+                alert("정답입니다! 🎉\n\n지도 앱에 [ ///젖소.화창한.포괄 ]을 검색하여 다음 장소로 추격하세요!");
+            } else {
+                alert("❌ 정답이 아닙니다. 다시 한번 추리해 보세요!");
+            }
+        }
+    </script>
+
+</body>
+</html>
